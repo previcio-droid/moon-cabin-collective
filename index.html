@@ -139,8 +139,8 @@
     }
 
     .brand-mark {
-      width: 60px;
-      height: 60px;
+      width: 80px;
+      height: 80px;
       border: 3px solid var(--neon-pink);
       border-radius: 50%;
       display: grid;
@@ -389,6 +389,9 @@
       overflow: hidden;
       isolation: isolate;
       animation: card-float 3s ease-in-out infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     @keyframes card-float {
@@ -405,24 +408,22 @@
     }
 
     .logo-medallion {
-      width: min(500px, 92%);
+      width: min(550px, 95%);
+      max-width: 600px;
       aspect-ratio: 1;
       border-radius: 50%;
       overflow: hidden;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
       z-index: 2;
       filter: drop-shadow(0 0 30px rgba(255, 20, 147, 0.8));
       border: 4px solid var(--neon-cyan);
       box-shadow: 0 0 40px var(--neon-cyan), inset 0 0 30px rgba(57, 255, 20, 0.2);
       animation: rotate-pulse 4s ease-in-out infinite;
+      position: relative;
     }
 
     @keyframes rotate-pulse {
-      0%, 100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
-      50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.05); }
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(1.05); }
     }
 
     .logo-medallion img {
@@ -902,6 +903,11 @@
 
       .process-grid {
         grid-template-columns: 1fr;
+      }
+
+      .brand-mark {
+        width: 70px;
+        height: 70px;
       }
     }
   </style>
