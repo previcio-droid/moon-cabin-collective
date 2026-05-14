@@ -3,95 +3,157 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Moon Cabin Collective | Art, Apparel & Small-Batch Goods</title>
-  <meta name="description" content="Moon Cabin Collective creates art-forward merch, prints, stickers, and everyday goods inspired by music, nature, mystery, and the glow of handmade community." />
+  <title>Moon Cabin Collective | Psychedelic Art, Apparel & Goods</title>
+  <meta name="description" content="Moon Cabin Collective - Trippy, colorful art-forward merch, prints, stickers, and handmade goods inspired by cosmic vibes and psychedelic dreams." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700;800&family=Bungee:wght@400;700&family=Righteous&display=swap" rel="stylesheet">
   <style>
     :root {
-      --ink: #1e1812;
-      --cream: #f7efe0;
-      --paper: #fff8e9;
-      --moss: #586b45;
-      --pine: #4f7a55;
-      --ember: #e46f3c;
-      --gold: #eab94d;
-      --moon: #d8d6bd;
-      --river: #5c898f;
-      --shadow: rgba(30, 24, 18, 0.18);
-      --line: rgba(30, 24, 18, 0.22);
+      --neon-pink: #FF1493;
+      --neon-green: #39FF14;
+      --neon-purple: #9D00FF;
+      --neon-blue: #00CCFF;
+      --neon-yellow: #FFFF00;
+      --neon-orange: #FF6600;
+      --neon-cyan: #00FFFF;
+      --dark-purple: #1a0033;
+      --dark-pink: #4d0033;
+      --ink: #000;
+      --white: #FFFFFF;
+      --shadow: 0 0 20px rgba(255, 20, 147, 0.5);
+      --glow-green: 0 0 15px #39FF14;
+      --glow-pink: 0 0 15px #FF1493;
+      --glow-purple: 0 0 15px #9D00FF;
+      --glow-blue: 0 0 15px #00CCFF;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 15% 10%, rgba(234,185,77,0.26), transparent 30%),
-        radial-gradient(circle at 85% 5%, rgba(92,137,143,0.18), transparent 28%),
-        linear-gradient(180deg, var(--cream), #efe1c7 58%, #d7c293);
-      line-height: 1.5;
+      font-family: 'Fredoka', 'Arial', sans-serif;
+      color: var(--white);
+      background: linear-gradient(135deg, #1a0033 0%, #2d0052 25%, #1a0033 50%, #0d001f 75%, #1a0033 100%);
+      background-size: 400% 400%;
+      animation: psychedelic-bg 15s ease infinite;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
     }
 
-    a { color: inherit; text-decoration: none; }
+    @keyframes psychedelic-bg {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-    .grain {
+    /* Animated background patterns */
+    body::before {
+      content: '';
       position: fixed;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 20, 147, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(157, 0, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 0%, rgba(0, 204, 255, 0.15) 0%, transparent 50%);
+      animation: pulse-gradients 8s ease-in-out infinite;
       pointer-events: none;
-      opacity: 0.22;
-      mix-blend-mode: multiply;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.35'/%3E%3C/svg%3E");
-      z-index: 20;
+      z-index: 1;
+    }
+
+    @keyframes pulse-gradients {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+    }
+
+    body > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     .wrap {
-      width: min(1180px, calc(100% - 32px));
+      width: min(1200px, calc(100% - 32px));
       margin: 0 auto;
     }
 
     header {
       position: sticky;
       top: 0;
-      z-index: 10;
-      backdrop-filter: blur(16px);
-      background: rgba(247, 239, 224, 0.84);
-      border-bottom: 1px solid var(--line);
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(26, 0, 51, 0.9);
+      border-bottom: 3px solid var(--neon-pink);
+      box-shadow: 0 0 30px rgba(255, 20, 147, 0.4);
+      animation: header-glow 2s ease-in-out infinite;
+    }
+
+    @keyframes header-glow {
+      0%, 100% { box-shadow: 0 0 30px rgba(255, 20, 147, 0.4); }
+      50% { box-shadow: 0 0 50px rgba(157, 0, 255, 0.6); }
     }
 
     .nav {
-      min-height: 74px;
+      min-height: 80px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 24px;
+      padding: 10px 0;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+      gap: 15px;
+      font-family: 'Bungee', cursive;
+      font-weight: 700;
+      font-size: 1.4rem;
       text-transform: uppercase;
-      font-size: 0.92rem;
+      letter-spacing: 0.1em;
+      background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.6));
+      animation: brand-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes brand-pulse {
+      0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.6)); }
+      50% { filter: drop-shadow(0 0 20px rgba(157, 0, 255, 0.8)); }
     }
 
     .brand-mark {
-      width: 54px;
-      height: 54px;
-      border: 2px solid var(--ink);
+      width: 60px;
+      height: 60px;
+      border: 3px solid var(--neon-pink);
       border-radius: 50%;
       display: grid;
       place-items: center;
-      background: var(--gold);
-      box-shadow: 4px 4px 0 var(--ink);
+      background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+      box-shadow: 0 0 20px var(--neon-pink), inset 0 0 15px rgba(255, 255, 255, 0.2);
+      animation: rotate-spin 3s linear infinite;
       overflow: hidden;
+    }
+
+    @keyframes rotate-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
     .brand-mark img {
@@ -99,6 +161,247 @@
       height: 100%;
       object-fit: cover;
       display: block;
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      font-family: 'Fredoka', sans-serif;
+    }
+
+    .links a:not(.button-link) {
+      color: var(--neon-cyan);
+      text-shadow: 0 0 10px var(--neon-cyan);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .links a:not(.button-link)::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple));
+      transition: width 0.3s ease;
+      box-shadow: 0 0 10px var(--neon-pink);
+    }
+
+    .links a:not(.button-link):hover {
+      color: var(--neon-pink);
+      text-shadow: 0 0 20px var(--neon-pink);
+    }
+
+    .links a:not(.button-link):hover::after {
+      width: 100%;
+    }
+
+    .button-link,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border: 3px solid;
+      border-image: linear-gradient(90deg, var(--neon-pink), var(--neon-purple)) 1;
+      border-radius: 50px;
+      background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+      color: var(--white);
+      font-weight: 800;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.9rem;
+      box-shadow: 0 0 20px rgba(255, 20, 147, 0.6);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--neon-cyan), var(--neon-green));
+      z-index: -1;
+      transition: left 0.3s ease;
+    }
+
+    .button:hover::before {
+      left: 0;
+    }
+
+    .button-link:hover,
+    .button:hover {
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 0 40px rgba(255, 20, 147, 0.8), 0 0 60px rgba(157, 0, 255, 0.6);
+    }
+
+    main {
+      position: relative;
+    }
+
+    section {
+      padding: 80px 0;
+      position: relative;
+    }
+
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 200%;
+      height: 100%;
+      background-image: 
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 50px,
+          rgba(57, 255, 20, 0.03) 50px,
+          rgba(57, 255, 20, 0.03) 100px
+        );
+      pointer-events: none;
+      animation: diagonal-move 20s linear infinite;
+    }
+
+    @keyframes diagonal-move {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(100px); }
+    }
+
+    .hero {
+      padding: 100px 0 60px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 800;
+      font-size: 0.85rem;
+      background: linear-gradient(90deg, var(--neon-green), var(--neon-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+      animation: shimmer 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 5px rgba(57, 255, 20, 0.5));
+    }
+
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; }
+    }
+
+    h1 {
+      font-family: 'Bungee', cursive;
+      font-size: clamp(3rem, 9vw, 7.2rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin: 0 0 30px 0;
+      max-width: 900px;
+      background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan), var(--neon-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 15px rgba(255, 20, 147, 0.5));
+      animation: text-glow 2s ease-in-out infinite;
+    }
+
+    @keyframes text-glow {
+      0%, 100% { filter: drop-shadow(0 0 15px rgba(255, 20, 147, 0.5)); }
+      50% { filter: drop-shadow(0 0 25px rgba(157, 0, 255, 0.7)); }
+    }
+
+    h2 {
+      font-family: 'Bungee', cursive;
+      font-size: clamp(2rem, 6vw, 4.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin: 0 0 20px 0;
+      background: linear-gradient(90deg, var(--neon-pink), var(--neon-yellow), var(--neon-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.4));
+    }
+
+    h3 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0 0 10px 0;
+      color: var(--neon-cyan);
+      text-shadow: 0 0 10px var(--neon-cyan);
+    }
+
+    .hero p {
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      max-width: 700px;
+      margin: 0 0 30px 0;
+      color: var(--white);
+      text-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .ghost-button {
+      background: transparent;
+      border-color: var(--neon-cyan) !important;
+      color: var(--neon-cyan);
+      box-shadow: 0 0 15px rgba(0, 204, 255, 0.5);
+      text-shadow: 0 0 10px var(--neon-cyan);
+    }
+
+    .ghost-button:hover {
+      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-green));
+      color: var(--ink);
+      box-shadow: 0 0 30px rgba(0, 204, 255, 0.8);
+    }
+
+    .moon-card {
+      position: relative;
+      min-height: 550px;
+      border: 4px solid;
+      border-image: linear-gradient(135deg, var(--neon-pink), var(--neon-purple), var(--neon-cyan)) 1;
+      border-radius: 40px;
+      background: linear-gradient(135deg, rgba(157, 0, 255, 0.2), rgba(255, 20, 147, 0.15));
+      box-shadow: 0 0 40px rgba(255, 20, 147, 0.6), inset 0 0 40px rgba(157, 0, 255, 0.2);
+      overflow: hidden;
+      isolation: isolate;
+      animation: card-float 3s ease-in-out infinite;
+    }
+
+    @keyframes card-float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .moon-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(57, 255, 20, 0.1), transparent 40%);
+      pointer-events: none;
     }
 
     .logo-medallion {
@@ -111,7 +414,15 @@
       top: 50%;
       transform: translate(-50%, -50%);
       z-index: 2;
-      filter: drop-shadow(0 28px 48px rgba(0,0,0,.42));
+      filter: drop-shadow(0 0 30px rgba(255, 20, 147, 0.8));
+      border: 4px solid var(--neon-cyan);
+      box-shadow: 0 0 40px var(--neon-cyan), inset 0 0 30px rgba(57, 255, 20, 0.2);
+      animation: rotate-pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes rotate-pulse {
+      0%, 100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+      50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.05); }
     }
 
     .logo-medallion img {
@@ -125,593 +436,497 @@
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      border: 4px solid var(--gold);
-      background:
-        radial-gradient(circle at 50% 30%, rgba(234,185,77,.95), rgba(234,185,77,.25) 18%, transparent 19%),
-        linear-gradient(180deg, #12363b 0%, #0f262b 52%, #1e1812 100%);
+      border: 4px solid var(--neon-pink);
+      background: linear-gradient(135deg, #9D00FF, #FF1493, #00CCFF);
       position: relative;
       overflow: hidden;
-      box-shadow:
-        inset 0 0 0 10px rgba(234,185,77,.14),
-        0 0 0 8px rgba(234,185,77,.08);
+      box-shadow: 0 0 50px rgba(255, 20, 147, 0.8), inset 0 0 30px rgba(57, 255, 20, 0.3);
     }
 
     .logo-placeholder::before {
-      content: "MOON CABIN";
+      content: "MOON";
       position: absolute;
-      top: 34px;
+      top: 40px;
       left: 50%;
       transform: translateX(-50%);
-      color: var(--gold);
-      font-family: Fraunces, Georgia, serif;
-      font-size: clamp(1.4rem, 2vw, 2rem);
+      color: var(--neon-yellow);
+      font-family: 'Bungee', cursive;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
       font-weight: 700;
-      letter-spacing: .18em;
+      letter-spacing: .12em;
       white-space: nowrap;
+      text-shadow: 0 0 15px var(--neon-yellow), 0 0 30px rgba(255, 20, 147, 0.6);
+      animation: bounce-text 2s ease-in-out infinite;
     }
 
     .logo-placeholder::after {
-      content: "COLLECTIVE";
+      content: "CABIN";
       position: absolute;
-      bottom: 34px;
+      bottom: 40px;
       left: 50%;
       transform: translateX(-50%);
-      color: var(--gold);
-      font-family: Fraunces, Georgia, serif;
-      font-size: clamp(1.4rem, 2vw, 2rem);
+      color: var(--neon-cyan);
+      font-family: 'Bungee', cursive;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
       font-weight: 700;
-      letter-spacing: .18em;
+      letter-spacing: .12em;
       white-space: nowrap;
+      text-shadow: 0 0 15px var(--neon-cyan), 0 0 30px rgba(0, 204, 255, 0.6);
+      animation: bounce-text-reverse 2s ease-in-out infinite;
     }
 
-    .placeholder-cabin {
-      position: absolute;
-      left: 50%;
-      bottom: 135px;
-      transform: translateX(-50%);
-      width: 210px;
-      height: 120px;
-      background: #9a5b37;
-      border: 4px solid #1e1812;
-      box-shadow: inset 0 0 0 8px rgba(0,0,0,.08);
+    @keyframes bounce-text {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
     }
 
-    .placeholder-cabin::before {
-      content: "";
-      position: absolute;
-      left: -18px;
-      top: -74px;
-      width: 240px;
-      height: 90px;
-      background: #1f2628;
-      border: 4px solid #1e1812;
-      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    @keyframes bounce-text-reverse {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(10px); }
     }
-
-    .placeholder-cabin::after {
-      content: "";
-      position: absolute;
-      left: 84px;
-      bottom: 0;
-      width: 42px;
-      height: 68px;
-      background: #1e1812;
-    }
-
-    .placeholder-trees {
-      position: absolute;
-      inset: auto 0 86px;
-      height: 180px;
-      opacity: .9;
-      background:
-        linear-gradient(135deg, transparent 0 43%, #1b2b1f 44% 58%, transparent 59%) 0 100% / 110px 170px repeat-x,
-        linear-gradient(135deg, transparent 0 44%, #223928 45% 59%, transparent 60%) 55px 100% / 90px 145px repeat-x;
-    }
-
-    .placeholder-notes {
-      position: absolute;
-      color: var(--gold);
-      font-size: 2.3rem;
-      text-shadow: 2px 2px 0 #1e1812;
-    }
-
-    .placeholder-notes.left { left: 110px; top: 310px; transform: rotate(-10deg); }
-    .placeholder-notes.right { right: 110px; top: 290px; transform: rotate(12deg); }
-
-    .ornamental-vine {
-      position: absolute;
-      width: 170px;
-      height: 170px;
-      border: 3px solid var(--gold);
-      border-left-color: transparent;
-      border-bottom-color: transparent;
-      border-radius: 50%;
-      opacity: .85;
-      z-index: 1;
-    }
-
-    .ornamental-vine.left { left: 18px; top: 118px; transform: rotate(-134deg); }
-    .ornamental-vine.right { right: 18px; top: 118px; transform: rotate(46deg); }
-
-    .music-note {
-      position: absolute;
-      color: var(--gold);
-      font-family: Fraunces, Georgia, serif;
-      font-size: 2.4rem;
-      font-weight: 700;
-      text-shadow: 2px 2px 0 var(--ink);
-      z-index: 3;
-    }
-
-    .music-note.one { left: 56px; bottom: 172px; transform: rotate(-12deg); }
-    .music-note.two { right: 64px; bottom: 196px; transform: rotate(14deg); }
-
-    .links {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      font-weight: 700;
-      font-size: 0.9rem;
-    }
-
-    .links a:not(.button-link) { opacity: 0.82; }
-    .links a:not(.button-link):hover { opacity: 1; }
-
-    .button-link,
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 18px;
-      border: 2px solid var(--ink);
-      border-radius: 999px;
-      background: var(--ember);
-      color: #fff8e9;
-      font-weight: 800;
-      box-shadow: 4px 4px 0 var(--ink);
-      transition: transform .16s ease, box-shadow .16s ease;
-    }
-
-    .button-link:hover,
-    .button:hover {
-      transform: translate(2px, 2px);
-      box-shadow: 2px 2px 0 var(--ink);
-    }
-
-    .hero {
-      padding: 72px 0 42px;
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 44px;
-      align-items: center;
-    }
-
-    .kicker {
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-weight: 800;
-      font-size: 0.78rem;
-      color: var(--moss);
-      margin-bottom: 16px;
-    }
-
-    h1, h2, h3 {
-      font-family: Fraunces, Georgia, serif;
-      line-height: 0.96;
-      margin: 0;
-    }
-
-    h1 {
-      font-size: clamp(3.6rem, 8vw, 7.6rem);
-      letter-spacing: -0.07em;
-      max-width: 850px;
-    }
-
-    .hero p {
-      font-size: clamp(1.05rem, 1.6vw, 1.32rem);
-      max-width: 670px;
-      margin: 24px 0 28px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
-    }
-
-    .ghost-button {
-      background: transparent;
-      color: var(--ink);
-    }
-
-    .moon-card {
-      position: relative;
-      min-height: 520px;
-      border: 2px solid var(--ink);
-      border-radius: 30px;
-      background:
-        radial-gradient(circle at 50% 20%, rgba(255,248,233,0.68), transparent 18%),
-        radial-gradient(circle at 50% 36%, var(--gold), transparent 13%),
-        linear-gradient(180deg, #1d2a22 0%, #314a35 48%, #77503a 100%);
-      box-shadow: 11px 11px 0 var(--ink);
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    .moon-card::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 54px;
-      width: 158px;
-      height: 158px;
-      transform: translateX(-50%);
-      border-radius: 50%;
-      background: var(--moon);
-      box-shadow: 0 0 55px rgba(216,214,189,0.68);
-      z-index: -1;
-    }
-
-    .cabin {
-      position: absolute;
-      left: 50%;
-      bottom: 92px;
-      width: 270px;
-      height: 160px;
-      transform: translateX(-50%);
-      border: 2px solid var(--ink);
-      background: #9a5b37;
-      box-shadow: inset 0 0 0 10px rgba(30,24,18,0.08);
-    }
-
-    .cabin::before {
-      content: "";
-      position: absolute;
-      left: -28px;
-      top: -82px;
-      width: 326px;
-      height: 110px;
-      background: #4b2b23;
-      border: 2px solid var(--ink);
-      transform: skewX(-18deg);
-      border-radius: 10px 10px 0 0;
-    }
-
-    .door {
-      position: absolute;
-      left: 105px;
-      bottom: 0;
-      width: 58px;
-      height: 92px;
-      background: var(--pine);
-      border: 2px solid var(--ink);
-    }
-
-    .window {
-      position: absolute;
-      width: 48px;
-      height: 44px;
-      background: var(--gold);
-      border: 2px solid var(--ink);
-      top: 42px;
-    }
-    .window.one { left: 34px; }
-    .window.two { right: 34px; }
-
-    .trees {
-      position: absolute;
-      inset: auto 0 0;
-      height: 210px;
-      background:
-        linear-gradient(130deg, transparent 0 43%, var(--pine) 44% 57%, transparent 58%) 5% 100% / 130px 190px repeat-x,
-        linear-gradient(130deg, transparent 0 44%, #182516 45% 58%, transparent 59%) 2% 100% / 100px 160px repeat-x;
-      opacity: .92;
-    }
-
-    .stars {
-      position: absolute;
-      inset: 26px;
-      background-image:
-        radial-gradient(circle, #fff8e9 0 2px, transparent 3px),
-        radial-gradient(circle, #fff8e9 0 1px, transparent 2px);
-      background-size: 92px 120px, 64px 80px;
-      opacity: .8;
-    }
-
-    .caption-strip {
-      position: absolute;
-      left: 20px;
-      right: 20px;
-      bottom: 20px;
-      padding: 14px 16px;
-      border: 2px solid var(--ink);
-      border-radius: 18px;
-      background: rgba(255, 248, 233, 0.92);
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      font-size: .86rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-    }
-
-    section { padding: 58px 0; }
 
     .section-title {
       display: flex;
       align-items: end;
       justify-content: space-between;
-      gap: 22px;
-      margin-bottom: 28px;
-      border-top: 2px solid var(--ink);
-      padding-top: 22px;
-    }
-
-    .section-title h2 {
-      font-size: clamp(2.3rem, 5vw, 4.8rem);
-      letter-spacing: -0.05em;
+      gap: 30px;
+      margin-bottom: 40px;
+      border-top: 3px solid var(--neon-cyan);
+      border-bottom: 2px dashed var(--neon-pink);
+      padding: 30px 0;
     }
 
     .section-title p {
-      max-width: 460px;
+      max-width: 500px;
       margin: 0;
       font-weight: 600;
+      color: var(--white);
+      font-size: 1.05rem;
     }
 
     .product-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+      gap: 25px;
     }
 
     .product {
-      border: 2px solid var(--ink);
-      border-radius: 24px;
-      background: var(--paper);
+      border: 3px solid;
+      border-image: linear-gradient(135deg, var(--neon-pink), var(--neon-purple)) 1;
+      border-radius: 25px;
+      background: linear-gradient(135deg, rgba(157, 0, 255, 0.15), rgba(255, 20, 147, 0.1));
       overflow: hidden;
-      box-shadow: 5px 5px 0 var(--ink);
+      box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .product::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(57, 255, 20, 0.3), transparent);
+      transition: left 0.5s ease;
+      z-index: 2;
+    }
+
+    .product:hover {
+      transform: scale(1.08) rotate(-1deg);
+      box-shadow: 0 0 40px rgba(255, 20, 147, 0.8), 0 0 60px rgba(157, 0, 255, 0.6);
+      border-image: linear-gradient(135deg, var(--neon-cyan), var(--neon-green)) 1;
+    }
+
+    .product:hover::before {
+      left: 100%;
     }
 
     .product-art {
-      height: 260px;
-      border-bottom: 2px solid var(--ink);
+      height: 280px;
+      border-bottom: 3px dashed var(--neon-cyan);
       display: grid;
       place-items: center;
-      background:
-        radial-gradient(circle at 50% 40%, rgba(255,248,233,.76), transparent 26%),
-        linear-gradient(135deg, rgba(88,107,69,.9), rgba(92,137,143,.78));
+      background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink), var(--neon-orange));
       position: relative;
       overflow: hidden;
+      animation: color-shift 4s ease-in-out infinite;
+    }
+
+    @keyframes color-shift {
+      0% { background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink), var(--neon-orange)); }
+      50% { background: linear-gradient(135deg, var(--neon-cyan), var(--neon-green), var(--neon-blue)); }
+      100% { background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink), var(--neon-orange)); }
     }
 
     .product-art::before,
     .product-art::after {
-      content: "";
+      content: '';
       position: absolute;
-      border: 2px solid var(--ink);
+      border: 3px solid var(--neon-yellow);
+      animation: rotate-border 4s linear infinite;
+    }
+
+    @keyframes rotate-border {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
     .product-art::before {
-      width: 118px;
-      height: 118px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
-      background: var(--gold);
-      box-shadow: 0 0 0 12px rgba(255,248,233,.22);
+      box-shadow: 0 0 20px var(--neon-yellow);
     }
 
     .product-art::after {
-      width: 180px;
-      height: 88px;
-      bottom: 46px;
-      border-radius: 50% 50% 8px 8px;
-      background: rgba(36,52,33,.86);
-      transform: rotate(-5deg);
+      width: 200px;
+      height: 100px;
+      border-radius: 50% 50% 0 0;
+      bottom: 30px;
+      opacity: 0.6;
+      animation: rotate-border-reverse 6s linear infinite;
     }
 
-    .product:nth-child(2) .product-art {
-      background: linear-gradient(135deg, #d9b44a, #cf6a3c 52%, #5c898f);
-    }
-    .product:nth-child(3) .product-art {
-      background: linear-gradient(135deg, #243421, #586b45 58%, #eab94d);
-    }
-    .product:nth-child(4) .product-art {
-      background: linear-gradient(135deg, #5c898f, #f7efe0 48%, #e46f3c);
+    @keyframes rotate-border-reverse {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
     }
 
     .product-info {
-      padding: 18px;
+      padding: 25px;
     }
 
     .product-info h3 {
-      font-size: 1.55rem;
-      letter-spacing: -0.03em;
-      margin-bottom: 8px;
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      color: var(--neon-yellow);
     }
 
     .product-info p {
-      margin: 0 0 14px;
+      margin: 0 0 15px;
       font-weight: 500;
-      color: rgba(30,24,18,.76);
+      color: var(--white);
+      font-size: 0.95rem;
     }
 
     .meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 10px;
     }
 
     .tag {
-      padding: 7px 10px;
-      border: 1.5px solid var(--ink);
-      border-radius: 999px;
-      font-size: .72rem;
+      padding: 8px 14px;
+      border: 2px solid var(--neon-cyan);
+      border-radius: 20px;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: .08em;
       font-weight: 800;
-      background: #fff8e9;
+      background: rgba(0, 204, 255, 0.15);
+      color: var(--neon-cyan);
+      box-shadow: 0 0 10px rgba(0, 204, 255, 0.3);
     }
 
     .story {
       display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 28px;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 40px;
       align-items: stretch;
     }
 
     .story-card,
     .quote-card {
-      border: 2px solid var(--ink);
-      border-radius: 30px;
-      background: var(--paper);
-      padding: clamp(24px, 4vw, 46px);
-      box-shadow: 7px 7px 0 var(--ink);
+      border: 4px solid;
+      border-image: linear-gradient(135deg, var(--neon-cyan), var(--neon-green)) 1;
+      border-radius: 35px;
+      padding: clamp(30px, 5vw, 50px);
+      box-shadow: 0 0 30px rgba(57, 255, 20, 0.4);
+      background: linear-gradient(135deg, rgba(157, 0, 255, 0.15), rgba(0, 204, 255, 0.1));
+      transition: all 0.3s ease;
+      animation: shimmer-border 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer-border {
+      0%, 100% { box-shadow: 0 0 30px rgba(57, 255, 20, 0.4); }
+      50% { box-shadow: 0 0 50px rgba(0, 204, 255, 0.6); }
+    }
+
+    .story-card {
+      transform: skewX(-2deg);
+    }
+
+    .story-card:hover {
+      transform: skewX(-2deg) rotate(1deg) scale(1.02);
+      box-shadow: 0 0 50px rgba(57, 255, 20, 0.8);
     }
 
     .story-card h2 {
-      font-size: clamp(2.4rem, 5vw, 5rem);
-      letter-spacing: -0.06em;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
-    .story-card p,
-    .quote-card p {
-      font-size: 1.08rem;
-      margin: 0 0 18px;
+    .story-card p {
+      color: var(--white);
+      font-size: 1.05rem;
+      margin-bottom: 18px;
+      line-height: 1.8;
     }
 
     .quote-card {
-      background:
-        linear-gradient(180deg, rgba(36,52,33,0.92), rgba(88,107,69,0.92)),
-        var(--pine);
-      color: var(--cream);
+      background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+      box-shadow: 0 0 40px rgba(255, 20, 147, 0.7);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      min-height: 390px;
+      justify-content: center;
+      min-height: 400px;
+      text-align: center;
     }
 
     .quote-card blockquote {
-      font-family: Fraunces, Georgia, serif;
-      font-size: clamp(2.1rem, 4vw, 4.2rem);
-      line-height: 1;
-      letter-spacing: -0.05em;
+      font-family: 'Bungee', cursive;
+      font-size: clamp(1.8rem, 4vw, 3.2rem);
+      line-height: 1.3;
+      letter-spacing: -0.02em;
       margin: 0;
+      color: var(--neon-yellow);
+      text-shadow: 0 0 20px rgba(255, 255, 0, 0.6), 0 0 40px rgba(255, 20, 147, 0.4);
+      animation: float-text 3s ease-in-out infinite;
+    }
+
+    @keyframes float-text {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .quote-card p {
+      color: var(--white);
+      font-size: 1.1rem;
+      margin-top: 20px;
     }
 
     .process-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      gap: 25px;
     }
 
     .process {
-      border: 2px solid var(--ink);
-      border-radius: 24px;
-      background: rgba(255,248,233,0.72);
-      padding: 24px;
-      min-height: 210px;
+      border: 3px dashed;
+      border-color: var(--neon-green);
+      border-radius: 25px;
+      background: linear-gradient(135deg, rgba(57, 255, 20, 0.15), rgba(0, 204, 255, 0.1));
+      padding: 30px;
+      min-height: 240px;
+      box-shadow: 0 0 25px rgba(57, 255, 20, 0.4);
+      transition: all 0.3s ease;
+      animation: bounce-subtle 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce-subtle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .process:hover {
+      transform: translateY(-10px) rotate(1deg);
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 50px rgba(57, 255, 20, 0.8);
+      background: linear-gradient(135deg, rgba(0, 204, 255, 0.2), rgba(57, 255, 20, 0.15));
     }
 
     .process span {
       display: inline-grid;
       place-items: center;
-      width: 42px;
-      height: 42px;
-      border: 2px solid var(--ink);
+      width: 55px;
+      height: 55px;
+      border: 3px solid var(--neon-yellow);
       border-radius: 50%;
-      background: var(--gold);
+      background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+      color: var(--neon-yellow);
       font-weight: 900;
+      font-size: 1.4rem;
       margin-bottom: 18px;
+      box-shadow: 0 0 20px var(--neon-yellow);
+      animation: spin-number 3s linear infinite;
+    }
+
+    @keyframes spin-number {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
     .process h3 {
-      font-size: 1.6rem;
-      letter-spacing: -0.04em;
-      margin-bottom: 10px;
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: var(--neon-cyan);
     }
 
-    .process p { margin: 0; font-weight: 500; }
+    .process p {
+      margin: 0;
+      font-weight: 500;
+      color: var(--white);
+      font-size: 0.95rem;
+    }
 
     .cta {
-      margin: 48px 0 74px;
-      border: 2px solid var(--ink);
-      border-radius: 36px;
-      padding: clamp(28px, 5vw, 58px);
-      background:
-        radial-gradient(circle at 10% 20%, rgba(234,185,77,.34), transparent 26%),
-        linear-gradient(135deg, var(--river), var(--moss));
-      color: #fff8e9;
-      box-shadow: 9px 9px 0 var(--ink);
+      margin: 60px 0;
+      border: 4px solid;
+      border-image: linear-gradient(90deg, var(--neon-cyan), var(--neon-green), var(--neon-yellow)) 1;
+      border-radius: 40px;
+      padding: clamp(40px, 6vw, 70px);
+      background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+      color: var(--white);
+      box-shadow: 0 0 50px rgba(255, 20, 147, 0.7), inset 0 0 30px rgba(57, 255, 20, 0.2);
       display: grid;
       grid-template-columns: 1fr auto;
-      gap: 26px;
+      gap: 40px;
       align-items: center;
+      animation: pulse-cta 2s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes pulse-cta {
+      0%, 100% { box-shadow: 0 0 50px rgba(255, 20, 147, 0.7), inset 0 0 30px rgba(57, 255, 20, 0.2); }
+      50% { box-shadow: 0 0 80px rgba(255, 20, 147, 0.9), inset 0 0 50px rgba(57, 255, 20, 0.4); }
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(57, 255, 20, 0.2), transparent 70%);
+      animation: radial-pulse 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes radial-pulse {
+      0%, 100% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.1); opacity: 0.6; }
     }
 
     .cta h2 {
-      font-size: clamp(2.5rem, 6vw, 5.6rem);
-      letter-spacing: -0.06em;
-      margin-bottom: 14px;
+      position: relative;
+      z-index: 2;
+      color: var(--neon-yellow);
+      text-shadow: 0 0 20px var(--neon-yellow);
     }
 
     .cta p {
-      max-width: 680px;
+      max-width: 700px;
       margin: 0;
-      font-size: 1.12rem;
+      font-size: 1.15rem;
       font-weight: 600;
+      color: var(--white);
+      position: relative;
+      z-index: 2;
     }
 
     footer {
-      border-top: 2px solid var(--ink);
-      padding: 28px 0 42px;
+      border-top: 3px solid var(--neon-cyan);
+      border-bottom: 3px solid var(--neon-pink);
+      padding: 40px 0 50px;
       font-weight: 700;
+      background: rgba(26, 0, 51, 0.6);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 -10px 30px rgba(0, 204, 255, 0.2);
     }
 
     .footer-inner {
       display: flex;
       justify-content: space-between;
-      gap: 20px;
+      gap: 30px;
       flex-wrap: wrap;
+      color: var(--neon-cyan);
+    }
+
+    .footer-inner span {
+      text-shadow: 0 0 10px var(--neon-cyan);
     }
 
     @media (max-width: 920px) {
       .hero,
       .story,
-      .cta { grid-template-columns: 1fr; }
-      .product-grid { grid-template-columns: repeat(2, 1fr); }
-      .process-grid { grid-template-columns: 1fr; }
-      .moon-card { min-height: 480px; }
-      .links { display: none; }
+      .cta {
+        grid-template-columns: 1fr;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .moon-card {
+        min-height: 480px;
+      }
+
+      .links {
+        display: none;
+      }
+
+      .cta {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .story-card {
+        transform: skewX(0deg);
+      }
     }
 
     @media (max-width: 560px) {
-      .product-grid { grid-template-columns: 1fr; }
-      .section-title { display: block; }
-      .section-title p { margin-top: 14px; }
-      .caption-strip { flex-direction: column; }
-      h1 { font-size: 3.4rem; }
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        display: block;
+      }
+
+      .section-title p {
+        margin-top: 20px;
+      }
+
+      h1 {
+        font-size: 2.8rem;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="grain" aria-hidden="true"></div>
-
   <header>
     <div class="wrap nav">
       <a class="brand" href="#top" aria-label="Moon Cabin Collective home">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="50" cy="50" r="48" fill="#243421" stroke="#eab94d" stroke-width="4"/>
-            <circle cx="50" cy="38" r="16" fill="#eab94d" opacity="0.95"/>
-            <polygon points="50,28 28,60 72,60" fill="#1e1812"/>
-            <rect x="34" y="58" width="32" height="20" fill="#9a5b37" stroke="#1e1812" stroke-width="2"/>
-            <rect x="45" y="64" width="10" height="14" fill="#1e1812"/>
+            <defs>
+              <linearGradient id="neonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#FF1493;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#9D00FF;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#00CCFF;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="45" fill="url(#neonGrad)" stroke="#39FF14" stroke-width="3"/>
+            <circle cx="50" cy="35" r="18" fill="#FFFF00" opacity="0.9" filter="url(#glow)"/>
+            <polygon points="50,20 28,65 72,65" fill="#FF1493"/>
+            <rect x="32" y="62" width="36" height="22" fill="#00CCFF" stroke="#39FF14" stroke-width="2"/>
+            <rect x="42" y="68" width="16" height="16" fill="#000"/>
           </svg>
         </span>
-        <span>Moon Cabin Collective</span>
+        <span>Moon Cabin</span>
       </a>
       <nav class="links" aria-label="Primary navigation">
         <a href="#shop">Shop</a>
@@ -725,66 +940,63 @@
   <main id="top" class="wrap">
     <section class="hero" aria-labelledby="hero-title">
       <div>
-        <p class="kicker">Art for the lot, the cabin, the show, and the everyday drift</p>
-        <h1 id="hero-title">Handmade signals from the moonlit woods.</h1>
+        <p class="kicker">✨ Trippy Vibes • Cosmic Art • Handmade Magic ✨</p>
+        <h1 id="hero-title">Welcome to the Psychedelic Cabin!</h1>
         <p>
-          Moon Cabin Collective is a small art shop for wanderers, music lovers, nature people, and seekers of strange little sparks. Rooted in nature and driven by sound, the work carries the same moonlit cabin feeling as the logo: evergreen silhouettes, amber firelight, bold circular badge energy, vintage poster grit, clean linework, and communal glow.
+          Moon Cabin Collective is your portal to vibrant, mind-bending art. We create cosmic merch, trippy prints, glowing stickers, and otherworldly goods inspired by infinite dreams and electric energy. Follow the glow into the moonlit woods.
         </p>
         <div class="hero-actions">
-          <a class="button" href="https://mooncabincollective.etsy.com" target="_blank" rel="noopener">Shop the Etsy Cabin</a>
-          <a class="button ghost-button" href="#story">Read the story</a>
+          <a class="button" href="https://mooncabincollective.etsy.com" target="_blank" rel="noopener">🚀 Enter the Shop</a>
+          <a class="button ghost-button" href="#story">📖 Read Our Story</a>
         </div>
-      </div> 
-      
-<div class="moon-card" aria-label="Moon Cabin Collective logo medallion">
-  <div class="logo-medallion">
-    <img src="images/moon-cabin-logo.png" alt="Moon Cabin Collective logo">
-  </div>
+      </div>
 
-  
-</div>
-
+      <div class="moon-card" aria-label="Moon Cabin Collective logo medallion">
+        <div class="logo-medallion">
+          <img src="images/moon-cabin-logo.png" alt="Moon Cabin Collective logo">
+        </div>
+      </div>
     </section>
 
     <section id="shop" aria-labelledby="shop-title">
       <div class="section-title">
-        <h2 id="shop-title">What’s in the cabin</h2>
-        <p>A simple storefront path inspired by independent illustrator shops: clear categories, tactile goods, and a handmade feel that lets the work breathe.</p>
+        <h2 id="shop-title">What's Trippin' in the Cabin</h2>
+        <p>Dive into our psychedelic collection of wearable art, cosmic prints, glowing stickers, and mystical goods. Each piece is a journey into the infinite.</p>
       </div>
 
       <div class="product-grid">
         <article class="product">
           <div class="product-art" aria-hidden="true"></div>
           <div class="product-info">
-            <h3>Tees</h3>
-            <p>Wearable art for shows, weekend wandering, and soft everyday rituals.</p>
-            <div class="meta"><span class="tag">Apparel</span><span class="tag">New drops</span></div>
+            <h3>Cosmic Tees</h3>
+            <p>Wearable psychedelic art for festival wanderers and reality explorers.</p>
+            <div class="meta"><span class="tag">Apparel</span><span class="tag">Trippy</span></div>
           </div>
         </article>
 
         <article class="product">
           <div class="product-art" aria-hidden="true"></div>
           <div class="product-info">
-            <h3>Stickers</h3>
-            <p>Cabin marks, laptop charms, journal sparks, and tiny talismans.</p>
-            <div class="meta"><span class="tag">Kiss-cut</span><span class="tag">Giftable</span></div>
+            <h3>Neon Stickers</h3>
+            <p>Glowing talismans for your laptop, journal, and cosmic spaces.</p>
+            <div class="meta"><span class="tag">Glow-Up</span><span class="tag">Gifts</span></div>
           </div>
         </article>
 
         <article class="product">
           <div class="product-art" aria-hidden="true"></div>
           <div class="product-info">
-            <h3>Prints</h3>
-            <p>Poster-style artwork with bold lines, vintage texture, and mythic echoes.</p>
-            <div class="meta"><span class="tag">Wall art</span><span class="tag">Limited feel</span></div>
+            <h3>Trippy Prints</h3>
+            <p>Mind-bending poster art with electric colors and cosmic vibes.</p>
+            <div class="meta"><span class="tag">Wall Art</span><span class="tag">Psychedelic</span></div>
           </div>
         </article>
 
         <article class="product">
           <div class="product-art" aria-hidden="true"></div>
           <div class="product-info">
-            <h3>Everyday Goods</h3>
-            <p>Mugs and small objects for the desk, studio, shelf, or campsite.</p>
+            <h3>Mystic Goods</h3>
+            <p>Glowing mugs, cosmic cups, and interdimensional desk essentials.</p>
             <div class="meta"><span class="tag">Home</span><span class="tag">Studio</span></div>
           </div>
         </article>
@@ -793,68 +1005,86 @@
 
     <section id="story" class="story" aria-labelledby="story-title">
       <div class="quote-card">
-        <blockquote>Made for the people who follow the glow.</blockquote>
-        <p>Favorite the shop, check back often, and watch for new drops as the cabin keeps gathering strange little treasures.</p>
+        <blockquote>Follow the Neon Glow.</blockquote>
+        <p>Enter the cabin, explore the colors, and let your mind wander through infinite possibility. New drops arrive when the moons align.</p>
       </div>
 
       <div class="story-card">
-        <p class="kicker">About the collective</p>
-        <h2 id="story-title">A little shop with a lantern in the window.</h2>
+        <p class="kicker">🌙 About the Collective 🌙</p>
+        <h2 id="story-title">A Cabin in the Cosmic Woods</h2>
         <p>
-          Moon Cabin Collective began as a place to gather design work inspired by music, community, and the feeling of being outside under a sky that knows more than it says. The shop is dedicated to fans of lot culture, jam-band spirit, handmade graphics, and the kind of art that feels like a memory from a show you almost dreamed.
+          Moon Cabin Collective is where psychedelic art meets cosmic consciousness. Born from vibrant dreams and infinite creativity, we craft art-forward merch designed to expand minds and elevate souls.
         </p>
         <p>
-          The work leans into bold screen-print energy, vintage illustration, nature symbols, astral figures, rivers, forests, campfire light, and cosmic little mysteries. Some pieces feel like posters. Some feel like stickers found in the bottom of a road-worn backpack. All of it is made for the lot, the show, and everyday wear.
+          Our work pulses with electric energy: neon colors, cosmic symbols, trippy patterns, and surreal illustrations. Every piece is a portal to another dimension—bold enough to glow, weird enough to inspire, and handmade with love for the seekers of strange magic.
         </p>
         <p>
-          New pieces are always forming: tees, stickers, mugs, prints, and whatever else wanders out of the woods next.
+          From festival tees to mystical prints, from glowing stickers to cosmic mugs, we're always creating new dimensions. Step inside and feel the infinite.
         </p>
       </div>
     </section>
 
     <section id="process" aria-labelledby="process-title">
       <div class="section-title">
-        <h2 id="process-title">The art language</h2>
-        <p>Moon Cabin lives between nature, sound, symbol, and ink. Think clean enough to print, weird enough to glow.</p>
+        <h2 id="process-title">The Cosmic Process</h2>
+        <p>Our art language flows through neon dreams, infinite symbols, and electric creation. Bold, trippy, and infinitely creative.</p>
       </div>
 
       <div class="process-grid">
         <article class="process">
           <span>01</span>
-          <h3>Symbol first</h3>
-          <p>Every design starts with a little myth: a moon, a cabin, a seeker, a fox, a river, a signal, a spark.</p>
+          <h3>Dream the Cosmos</h3>
+          <p>Every design starts with a psychedelic vision: infinite loops, cosmic symbols, dancing colors, and dream logic.</p>
         </article>
         <article class="process">
           <span>02</span>
-          <h3>Print-minded</h3>
-          <p>Bold silhouettes, strong linework, limited-palette thinking, and artwork that can live on cotton, paper, vinyl, or ceramic.</p>
+          <h3>Electrify the Art</h3>
+          <p>Bold lines, vibrant gradients, glowing effects, and neon energy that jumps off every surface you wear or hang.</p>
         </article>
         <article class="process">
           <span>03</span>
-          <h3>Community glow</h3>
-          <p>Made for people who collect moments: concerts, campfires, inside jokes, long drives, odd signs, and shared wonder.</p>
+          <h3>Share the Glow</h3>
+          <p>Made for cosmic seekers, festival lovers, dreamers, and anyone ready to embrace the beautiful weirdness.</p>
         </article>
       </div>
     </section>
 
     <section class="cta" aria-labelledby="cta-title">
       <div>
-        <h2 id="cta-title">Step inside the shop.</h2>
-        <p>Browse the current Moon Cabin Collective drop on Etsy, favorite the shop, and come back when the next moon rises.</p>
+        <h2 id="cta-title">Step Through the Portal 🌀</h2>
+        <p>Explore our psychedelic collection on Etsy, discover new cosmic dimensions, and join the infinite journey with Moon Cabin Collective.</p>
       </div>
-      <a class="button" href="https://mooncabincollective.etsy.com" target="_blank" rel="noopener">Open Etsy</a>
+      <a class="button" href="https://mooncabincollective.etsy.com" target="_blank" rel="noopener">Enter the Portal ✨</a>
     </section>
   </main>
 
   <footer>
     <div class="wrap footer-inner">
-      <span>© <span id="year"></span> Moon Cabin Collective</span>
-      <span>Art, apparel, stickers & small-batch goods by Previcio</span>
+      <span>© <span id="year"></span> Moon Cabin Collective — Psychedelic Dreams, Cosmic Vibes ✨</span>
+      <span>Handmade Infinity by Previcio 🚀</span>
     </div>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Psychedelic mouse effect
+    document.addEventListener('mousemove', (e) => {
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      
+      document.body.style.backgroundPosition = `${x * 100}% ${y * 100}%`;
+    });
+
+    // Add glow effect to buttons on hover
+    document.querySelectorAll('.button, .product, .process').forEach(el => {
+      el.addEventListener('mouseenter', function() {
+        const rect = this.getBoundingClientRect();
+        const colors = ['#FF1493', '#9D00FF', '#39FF14', '#00CCFF'];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        this.style.borderImage = `linear-gradient(135deg, ${randomColor}, #FFFF00) 1`;
+      });
+    });
   </script>
 </body>
 </html>
