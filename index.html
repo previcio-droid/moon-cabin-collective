@@ -386,7 +386,7 @@
       border-radius: 40px;
       background: linear-gradient(135deg, rgba(157, 0, 255, 0.2), rgba(255, 20, 147, 0.15));
       box-shadow: 0 0 40px rgba(255, 20, 147, 0.6), inset 0 0 40px rgba(157, 0, 255, 0.2);
-      overflow: hidden;
+      overflow: visible;
       isolation: isolate;
       animation: card-float 3s ease-in-out infinite;
     }
@@ -405,18 +405,23 @@
     }
 
 .logo-medallion {
-  width: min(500px, 92%);
+  width: min(620px, 98%);
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   overflow: hidden;
+
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
   z-index: 2;
-  filter: drop-shadow(0 0 30px rgba(255, 20, 147, 0.8));
-  box-shadow: 0 0 40px rgba(0, 204, 255, 0.45);
-  animation: rotate-pulse 4s ease-in-out infinite;
+
+  transform: translate(-50%, -50%);
+  animation: rotate-pulse 12s linear infinite;
+
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
 
 }
 
@@ -426,7 +431,8 @@
   object-fit: cover;
   object-position: center;
   display: block;
-  transform: scale(1.25);
+
+  transform: scale(1.35);
 }
     }
 
