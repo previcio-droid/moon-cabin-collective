@@ -409,20 +409,27 @@
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   overflow: hidden;
-
   position: absolute;
   left: 50%;
   top: 50%;
   z-index: 2;
-
   transform: translate(-50%, -50%);
   animation: rotate-pulse 12s linear infinite;
-
   box-shadow: none;
   border: none;
   background: transparent;
 }
 
+@keyframes rotate-pulse {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) scale(1.05);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1);
+  }
 }
 
 .logo-medallion img {
@@ -431,24 +438,9 @@
   object-fit: cover;
   object-position: center;
   display: block;
-
   transform: scale(1.35);
 }
-    }
 
-    @keyframes rotate-pulse {
-      0%, 100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
-      50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.05); }
-    }
-
-   .logo-medallion img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  transform: scale(1.25);
-}
 }
 
     .logo-placeholder {
