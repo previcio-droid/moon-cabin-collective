@@ -405,19 +405,11 @@
     }
 
     .logo-medallion {
-      width: min(500px, 92%);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      overflow: hidden;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      filter: drop-shadow(0 0 30px rgba(255, 20, 147, 0.8));
-      border: 4px solid var(--neon-cyan);
-      box-shadow: 0 0 40px var(--neon-cyan), inset 0 0 30px rgba(57, 255, 20, 0.2);
-      animation: rotate-pulse 4s ease-in-out infinite;
+  width: min(500px, 92%);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+}
     }
 
     @keyframes rotate-pulse {
@@ -425,13 +417,14 @@
       50% { transform: translate(-50%, -50%) rotate(180deg) scale(1.05); }
     }
 
-    .logo-medallion img {
-  width: 115%;
-  height: 115%;
+   .logo-medallion img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
-  transform: translate(-6.5%, -6.5%);
+  transform: scale(1.18);
+}
 }
 
     .logo-placeholder {
