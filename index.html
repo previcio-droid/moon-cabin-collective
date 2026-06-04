@@ -406,44 +406,42 @@
       pointer-events: none;
     }
 
-.logo-medallion {
-  width: min(620px, 98%);
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  overflow: hidden;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 2;
-  transform: translate(-50%, -50%);
-  animation: rotate-pulse 12s linear infinite;
-  box-shadow: none;
-  border: none;
-  background: transparent;
-}
+    .logo-medallion {
+      width: min(620px, 98%);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      overflow: hidden;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 2;
+      transform: translate(-50%, -50%);
+      animation: rotate-pulse 12s linear infinite;
+      box-shadow: none;
+      border: none;
+      background: transparent;
+    }
 
-@keyframes rotate-pulse {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg) scale(1);
-  }
-  50% {
-    transform: translate(-50%, -50%) rotate(180deg) scale(1.05);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg) scale(1);
-  }
-}
+    @keyframes rotate-pulse {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+      }
+      50% {
+        transform: translate(-50%, -50%) rotate(180deg) scale(1.05);
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg) scale(1);
+      }
+    }
 
-.logo-medallion img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  transform: scale(1.35);
-}
-
-}
+    .logo-medallion img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transform: scale(1.35);
+    }
 
     .logo-placeholder {
       width: 100%;
@@ -517,131 +515,59 @@
       font-size: 1.05rem;
     }
 
+    /* ⚡ REDESIGNED PRODUCT GRID */
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 25px;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 30px;
     }
 
     .product {
-      border: 3px solid;
-      border-image: linear-gradient(135deg, var(--neon-pink), var(--neon-purple)) 1;
-      border-radius: 25px;
-      background: linear-gradient(135deg, rgba(157, 0, 255, 0.15), rgba(255, 20, 147, 0.1));
-      overflow: hidden;
-      box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
+      background-color: var(--ink);
+      border: 1px solid var(--dark-purple);
+      padding: 20px;
+      text-align: center;
       transition: all 0.3s ease;
       cursor: pointer;
+      border-radius: 12px;
       position: relative;
     }
 
-    .product::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(57, 255, 20, 0.3), transparent);
-      transition: left 0.5s ease;
-      z-index: 2;
-    }
-
-    .product:hover {
-      transform: scale(1.08) rotate(-1deg);
-      box-shadow: 0 0 40px rgba(255, 20, 147, 0.8), 0 0 60px rgba(157, 0, 255, 0.6);
-      border-image: linear-gradient(135deg, var(--neon-cyan), var(--neon-green)) 1;
-    }
-
-    .product:hover::before {
-      left: 100%;
-    }
-
-    .product-art {
-      height: 280px;
-      border-bottom: 3px dashed var(--neon-cyan);
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink), var(--neon-orange));
-      position: relative;
-      overflow: hidden;
-      animation: color-shift 4s ease-in-out infinite;
-    }
-
-    @keyframes color-shift {
-      0% { background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink), var(--neon-orange)); }
-      50% { background: linear-gradient(135deg, var(--neon-cyan), var(--neon-green), var(--neon-blue)); }
-      100% { background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink), var(--neon-orange)); }
-    }
-
-    .product-art::before,
-    .product-art::after {
-      content: '';
-      position: absolute;
-      border: 3px solid var(--neon-yellow);
-      animation: rotate-border 4s linear infinite;
-    }
-
-    @keyframes rotate-border {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .product-art::before {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      box-shadow: 0 0 20px var(--neon-yellow);
-    }
-
-    .product-art::after {
+    .product img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 15px;
       width: 200px;
-      height: 100px;
-      border-radius: 50% 50% 0 0;
-      bottom: 30px;
-      opacity: 0.6;
-      animation: rotate-border-reverse 6s linear infinite;
+      height: 200px;
+      object-fit: contain;
     }
 
-    @keyframes rotate-border-reverse {
-      from { transform: rotate(360deg); }
-      to { transform: rotate(0deg); }
-    }
-
-    .product-info {
-      padding: 25px;
-    }
-
-    .product-info h3 {
-      font-size: 1.6rem;
-      margin-bottom: 10px;
-      color: var(--neon-yellow);
-    }
-
-    .product-info p {
-      margin: 0 0 15px;
-      font-weight: 500;
-      color: var(--white);
-      font-size: 0.95rem;
-    }
-
-    .meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .tag {
-      padding: 8px 14px;
-      border: 2px solid var(--neon-cyan);
-      border-radius: 20px;
-      font-size: 0.75rem;
+    .product h3 {
+      font-size: 16px;
+      margin: 10px 0 5px 0;
       text-transform: uppercase;
-      letter-spacing: .08em;
-      font-weight: 800;
-      background: rgba(0, 204, 255, 0.15);
-      color: var(--neon-cyan);
-      box-shadow: 0 0 10px rgba(0, 204, 255, 0.3);
+      letter-spacing: 1px;
+      color: var(--white);
+      text-shadow: none;
+    }
+
+    .product p {
+      font-size: 14px;
+      color: var(--white);
+      opacity: 0.8;
+      margin: 0;
+    }
+
+    /* THE MAGIC: Hover Effect */
+    .product:hover {
+      border: 1px solid var(--neon-pink);
+      box-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .product:nth-child(even):hover {
+      border: 1px solid var(--neon-green);
+      box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
     }
 
     .story {
@@ -942,10 +868,10 @@
         <span>Moon Cabin</span>
       </a>
       <nav class="links" aria-label="Primary navigation">
-  <a href="#shop">Shop</a>
-  <a href="#story">About</a>
-  <a class="button-link" href="https://mooncabincollective.etsy.com" target="_blank" rel="noopener">Visit Etsy</a>
-</nav>
+        <a href="#shop">Shop</a>
+        <a href="#story">About</a>
+        <a class="button-link" href="https://mooncabincollective.etsy.com" target="_blank" rel="noopener">Visit Etsy</a>
+      </nav>
     </div>
   </header>
 
@@ -955,7 +881,7 @@
         <p class="kicker">✨ Trippy Vibes • Cosmic Art • Handmade Magic ✨</p>
         <h1 id="hero-title">Welcome to the Psychedelic Cabin!</h1>
         <p>
-          Moon Cabin Collective is your portal to vibrant, mind-bending art. We create cosmic merch, trippy prints, cool stickers, and otherworldly goods inspired by infinite dreams and electric vibes. Join the collective and explore consciousness through color.
+          Moon Cabin Collective is your portal to vibrant, mind-bending art. We create cosmic merch, trippy prints, cool stickers, and otherworldly goods inspired by infinite dreams and electric [...]
         </p>
         <div class="hero-actions">
           <a class="button" href="https://mooncabincollective.etsy.com" target="_blank" rel="noopener">🚀 Enter the Shop</a>
@@ -978,98 +904,36 @@
 
       <div class="product-grid">
         <article class="product">
-          <div class="product-art" aria-hidden="true"></div>
-          <div class="product-info">
-            <h3>Cosmic Tees</h3>
-            <p>Wearable psychedelic art for festival wanderers and reality explorers.</p>
-            <div class="meta"><span class="tag">Apparel</span><span class="tag">Trippy</span></div>
-          </div>
+          <img src="Elmeg_sticker.jpg" alt="Elmeg The Wise Sticker">
+          <h3>Elmeg The Wise Sticker</h3>
+          <p>$5.00</p>
         </article>
 
         <article class="product">
-          <div class="product-art" aria-hidden="true"></div>
-          <div class="product-info">
-            <h3>Cool Stickers</h3>
-            <p>Talismans for your laptop, journal, and cosmic spaces.</p>
-            <div class="meta"><span class="tag">Glow-Up</span><span class="tag">Gifts</span></div>
-          </div>
+          <img src="Silver Rising_shirt.jpg" alt="Silver Rising Tee">
+          <h3>Silver Rising Tee</h3>
+          <p>$30.00</p>
         </article>
 
         <article class="product">
-          <div class="product-art" aria-hidden="true"></div>
-          <div class="product-info">
-            <h3>Trippy Prints</h3>
-            <p>Mind-bending poster art with electric colors and cosmic vibes.</p>
-            <div class="meta"><span class="tag">Wall Art</span><span class="tag">Psychedelic</span></div>
-          </div>
+          <img src="Goose_Van.jpg" alt="Flaming Retro Van">
+          <h3>Retro Van Sticker</h3>
+          <p>$6.00</p>
         </article>
 
         <article class="product">
-          <div class="product-art" aria-hidden="true"></div>
-          <div class="product-info">
-            <h3>Mystic Goods</h3>
-            <p>Groovy mugs, cosmic cups, and interdimensional desk essentials.</p>
-            <div class="meta"><span class="tag">Home</span><span class="tag">Studio</span></div>
-          </div>
+          <img src="Mug.jpg" alt="Concert Stage Mug">
+          <h3>Stage Lights Mug</h3>
+          <p>$18.00</p>
         </article>
-      </div>
-    </section>
-
-    <section id="story" aria-labelledby="story-title">
-      <div class="story">
-        <article class="story-card">
-          <h2 id="story-title">The Cosmic Journey</h2>
-          <p>Moon Cabin Collective Started as a sanctuary for psychedelic art lovers. Every piece we create channels the infinite energy of cosmic consciousness—blending  cosmic dreams with handmade passion.</p>
-          <p>From digital designs to printed merch and crafted experiences that expand minds and celebrate the trippy, beautiful chaos of existence.</p>
-        </article>
-
-        <article class="quote-card">
-          <blockquote>"In the moon cabin, reality bends into art"</blockquote>
-          <p>— The Collective</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="process" aria-labelledby="process-title">
-      <div class="section-title">
-        <h2 id="process-title">Our Creative Process</h2>
-        <p>Each product is born from cosmic inspiration, digital alchemy, and meticulous craftsmanship.</p>
-      </div>
-
-      <div class="process-grid">
-        <article class="process">
-          <span>1</span>
-          <h3>✨ Inspiration</h3>
-          <p>Channeling cosmic energy, dreams, and psychedelic visions into concept art.</p>
-        </article>
-
-        <article class="process">
-          <span>2</span>
-          <h3>🎨 Design</h3>
-          <p>Artistic pieces crafted into intricate digital designs with vibrant colors and trippy patterns.</p>
-        </article>
-
-        <article class="process">
-          <span>3</span>
-          <h3>🚀 Materialize</h3>
-          <p>Printed, woven, and crafted with care to bring visions to life.</p>
-        </article>
-      </div>
-
-      <div class="cta" role="complementary">
-        <div>
-          <h2>Ready to Enter the Cabin?</h2>
-          <p>Explore our full collection of cosmic art and psychedelic goods. Every purchase supports independent artists and cosmic dreamers.</p>
-        </div>
-        <a class="button" href="https://mooncabincollective.etsy.com" target="_blank" rel="noopener">🌙 Shop Now</a>
       </div>
     </section>
   </main>
 
-  <footer class="wrap">
-    <div class="footer-inner">
-      <span>&copy; 2026 Moon Cabin Collective. All cosmic rights reserved.</span>
-      <span>Made with 💫 and cosmic energy</span>
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© 2026 Moon Cabin Collective. All rights reserved.</span>
+      <span>Handmade with cosmic energy ✨</span>
     </div>
   </footer>
 </body>
