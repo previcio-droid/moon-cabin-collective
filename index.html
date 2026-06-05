@@ -416,24 +416,31 @@
       top: 50%;
       z-index: 2;
       transform: translate(-50%, -50%);
-      animation: rotate-pulse 12s linear infinite;
       box-shadow: none;
       border: none;
       background: transparent;
     }
 
-    @keyframes rotate-pulse {
+    /* ✨ COSMIC FLOAT & SPIN ANIMATION ✨ */
+    @keyframes cosmic-float-spin {
       0% {
-        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+        transform: translate(-50%, -50%) translateY(0px) rotate(0deg);
+      }
+      25% {
+        transform: translate(-50%, -50%) translateY(-20px) rotate(90deg);
       }
       50% {
-        transform: translate(-50%, -50%) rotate(180deg) scale(1.05);
+        transform: translate(-50%, -50%) translateY(-15px) rotate(180deg);
+      }
+      75% {
+        transform: translate(-50%, -50%) translateY(-25px) rotate(270deg);
       }
       100% {
-        transform: translate(-50%, -50%) rotate(360deg) scale(1);
+        transform: translate(-50%, -50%) translateY(0px) rotate(360deg);
       }
     }
 
+    /* Apply the animation to the logo image with drop-shadow glow */
     .logo-medallion img {
       width: 100%;
       height: 100%;
@@ -441,6 +448,9 @@
       object-position: center;
       display: block;
       transform: scale(1.35);
+      animation: cosmic-float-spin 12s ease-in-out infinite;
+      filter: drop-shadow(0 0 20px rgba(255, 20, 147, 0.7)) drop-shadow(0 0 40px rgba(157, 0, 255, 0.5));
+      background: transparent;
     }
 
     .logo-placeholder {
