@@ -636,6 +636,40 @@
       margin-top: 20px;
     }
 
+    /* Artist Story Section Styles */
+    #artist-story {
+      background: linear-gradient(135deg, rgba(157, 0, 255, 0.1), rgba(255, 20, 147, 0.05));
+      border-top: 3px solid var(--neon-green);
+      border-bottom: 3px solid var(--neon-cyan);
+    }
+
+    .artist-content {
+      max-width: 800px;
+      margin: 0 auto;
+      border: 4px solid;
+      border-image: linear-gradient(135deg, var(--neon-purple), var(--neon-pink)) 1;
+      border-radius: 35px;
+      padding: clamp(30px, 5vw, 50px);
+      background: linear-gradient(135deg, rgba(157, 0, 255, 0.15), rgba(0, 204, 255, 0.1));
+      box-shadow: 0 0 40px rgba(255, 20, 147, 0.5);
+    }
+
+    .artist-content h2 {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .artist-content p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .artist-content p:last-child {
+      margin-bottom: 0;
+    }
+
     .process-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -859,7 +893,7 @@
       </a>
       <nav class="links" aria-label="Primary navigation">
         <a href="#shop">Shop</a>
-        <a href="#story">About</a>
+        <a href="#artist-story">About</a>
         <a class="button-link" href="https://mooncabincollective.etsy.com" target="_blank" rel="noopener">Visit Etsy</a>
       </nav>
     </div>
@@ -875,7 +909,7 @@
         </p>
         <div class="hero-actions">
           <a class="button" href="https://mooncabincollective.etsy.com" target="_blank" rel="noopener">🚀 Enter the Shop</a>
-          <a class="button ghost-button" href="#story">📖 Read Our Story</a>
+          <a class="button ghost-button" href="#artist-story">📖 Read Our Story</a>
         </div>
       </div>
 
@@ -916,6 +950,21 @@
           <h3>Silver Rising Hoodie</h3>
           <p>$44.69</p>
         </article>
+      </div>
+    </section>
+
+    <section id="artist-story" aria-labelledby="artist-title">
+      <div class="artist-content">
+        <h2 id="artist-title">About the Artist</h2>
+        <p>
+          Welcome to my cosmic creative sanctuary! I'm the visionary behind Moon Cabin Collective, a space where imagination flows freely and psychedelic dreams become tangible art. Every piece I create is infused with intention, energy, and a deep love for vibrant, mind-bending aesthetics.
+        </p>
+        <p>
+          My journey as an artist has always been about pushing boundaries and exploring the infinite possibilities of color, form, and consciousness. From hand-drawn designs to digital creations, each work tells a story of cosmic exploration and spiritual awakening. Whether it's a sticker, t-shirt, or print, I pour my soul into every creation.
+        </p>
+        <p>
+          Moon Cabin Collective isn't just a shop—it's a portal to another dimension of creativity. Thank you for stepping into this cabin and supporting the art that matters to me. Your energy and presence fuel this cosmic journey. 🌌✨
+        </p>
       </div>
     </section>
   </main>
