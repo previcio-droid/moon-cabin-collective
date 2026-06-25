@@ -877,13 +877,15 @@
       }
       .codex-embed {
     width: 100%;
-    height: 500px;
+    /* This ensures the sketch keeps its shape even as the window resizes */
+    aspect-ratio: 16 / 9; 
+    max-width: 800px;
+    margin: 40px auto 0 auto;
+    display: block;
     border: 3px solid var(--neon-cyan);
     border-radius: 20px;
-    margin-top: 40px;
     box-shadow: var(--glow-blue);
     background-color: var(--ink);
-}
     }
     .codex-button {
     display: inline-block;
