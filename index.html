@@ -1029,8 +1029,8 @@
 
 <div id="goose-game-container" style="display:flex; justify-content:center; margin: 40px 0;"></div>
 
+
 <script>
-  // Global Variables
   let shapes = [];
   let borderMargin = 25; 
   let letters = ['G', 'O', 'O', 'S', 'E', '!'];
@@ -1043,6 +1043,7 @@
 
   function draw() {
     background(20);
+    
     // 1. Draw the Score
     fill(255);
     noStroke();
@@ -1066,7 +1067,7 @@
     updatePhysicsEngine();
     handleMerges();
     
-    // 4. Render shapes with glow
+    // 4. Render shapes
     for (let s of shapes) {
       let shapeColor = getTierColor(s.tier);
       fill(shapeColor);
@@ -1091,7 +1092,8 @@
   }
 
   function spawnNewShape(xPos) {
-    let tier = 0; 
+    // Randomize starting tier slightly or keep at 0
+    let tier = floor(random(0, 2)); 
     shapes.push({
       x: xPos,
       y: borderMargin + 20, 
@@ -1112,11 +1114,57 @@
       else if (s.x > rightBound) { s.x = rightBound; s.vx *= -0.5; }
       if (s.y > bottomBound) { s.y = bottomBound; s.vy *= -0.3; s.vx *= 0.8; }
     }
-    // ... (keep your collision logic here)
+    
+    // Collision detection
+    for (let i = 0; i < shapes.length; i++) {
+      for (let j = i + 1; j < shapes.length; j++) {
+        let s1 = shapes[i];
+        let s2 = shapes[j];
+        let dx = s2.x - s1.x;
+        let dy = s2.y - s1.y;
+        let distSq = dx * dx + dy * dy;
+        let minR = s1.radius + s2.radius;
+        if (distSq < minR * minR) {
+          let dist = sqrt(distSq);
+          if (dist === 0) { dist = 0.1; dx = 0.1; dy = 0; }
+          let overlap = minR - dist;
+          let nx = dx / dist;
+          let ny = dy / dist;
+          s1.x -= nx * overlap * 0.5;
+          s1.y -= ny * overlap * 0.5;
+          s2.x += nx * overlap * 0.5;
+          s2.y += ny * overlap * 0.5;
+        }
+      }
+    }
   }
 
   function handleMerges() {
-    // ... (keep your merge logic here)
+    let nextShapes = [];
+    let toRemove = new Set();
+    for (let i = 0; i < shapes.length; i++) {
+      for (let j = i + 1; j < shapes.length; j++) {
+        if (toRemove.has(i) || toRemove.has(j)) continue;
+        let s1 = shapes[i];
+        let s2 = shapes[j];
+        if (s1.tier === s2.tier) {
+          let distSq = sq(s2.x - s1.x) + sq(s2.y - s1.y);
+          let minR = s1.radius + s2.radius;
+          if (distSq <= (minR * minR) + 5) {
+            toRemove.add(i);
+            toRemove.add(j);
+            if (s1.tier < letters.length - 1) {
+              let newTier = s1.tier + 1;
+              if (newTier === letters.length - 1) score++;
+              nextShapes.push({ x: (s1.x + s2.x) / 2, y: (s1.y + s2.y) / 2, vx: 0, vy: 0, radius: 12.5 + (newTier * 6), tier: newTier });
+            }
+          }
+        }
+      }
+    }
+    let newShapeList = [];
+    for (let i = 0; i < shapes.length; i++) { if (!toRemove.has(i)) newShapeList.push(shapes[i]); }
+    shapes = newShapeList.concat(nextShapes);
   }
 
   function getTierColor(tier) {
