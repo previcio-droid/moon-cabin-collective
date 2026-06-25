@@ -876,6 +876,26 @@
         grid-template-columns: 1fr;
       }
     }
+    .codex-button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 24px;
+    background-color: var(--ink);
+    color: var(--neon-cyan);
+    border: 2px solid var(--neon-cyan);
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: var(--glow-blue); /* Using your glow-blue variable */
+}
+
+.codex-button:hover {
+    background-color: var(--neon-cyan);
+    color: var(--ink);
+    box-shadow: 0 0 30px var(--neon-cyan); /* Intensified glow on hover */
+    cursor: pointer;
+}
   </style>
 </head>
 <body>
