@@ -1025,7 +1025,28 @@
 </a>
       </div>
     </section>
-    <iframe src="https://editor.p5js.org/previcio/full/sQLWkx3_6" class="codex-embed" title="Moon Cabin Creative Sketch"></iframe>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.0/p5.min.js"></script>
+
+<div id="goose-game-container" style="display:flex; justify-content:center; margin: 40px 0;"></div>
+
+<script>
+  let shapes = [];
+  let borderMargin = 25; 
+  let letters = ['G', 'O', 'O', 'S', 'E', '!'];
+  let score = 0;
+
+  function setup() {
+    let canvas = createCanvas(300, 400);
+    canvas.parent('goose-game-container');
+  }
+
+  // --- PASTE THE REST OF YOUR GAME CODE BELOW ---
+  function draw() {
+    background(20);
+    // ... your draw logic ...
+  }
+  // ... etc ...
+</script>
   </main>
 
   <footer>
