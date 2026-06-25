@@ -1030,6 +1030,7 @@
 <div id="goose-game-container" style="display:flex; justify-content:center; margin: 40px 0;"></div>
 
 <script>
+  // Global Variables
   let shapes = [];
   let borderMargin = 25; 
   let letters = ['G', 'O', 'O', 'S', 'E', '!'];
@@ -1040,182 +1041,88 @@
     canvas.parent('goose-game-container');
   }
 
-  // --- PASTE THE REST OF YOUR GAME CODE BELOW ---
-  // G-O-O-S-E-! Suika Engine - 50% Scale (Neon Glow Edition)
-let shapes = [];
-let borderMargin = 25; 
-let letters = ['G', 'O', 'O', 'S', 'E', '!'];
-let score = 0;
-
-function setup() {
-  createCanvas(300, 400); 
-}
-
-function draw() {
-  background(20); // Dark background makes the neons pop
-  
-  // 1. Draw the Score
-  fill(255);
-  noStroke();
-  textAlign(LEFT, CENTER);
-  textSize(16);
-  text("! Created: " + score, borderMargin, borderMargin + 10);
-  
-  // 2. Draw the container bounds
-  fill(30);
-  stroke(150);
-  strokeWeight(2);
-  rect(borderMargin, borderMargin + 55, width - (borderMargin * 2), height - (borderMargin * 2) - 55);
-  
-  // 3. Draw the danger line
-  stroke(255, 0, 50, 200);
-  strokeWeight(2);
-  drawingContext.setLineDash([5, 5]);
-  line(borderMargin, borderMargin + 55, width - borderMargin, borderMargin + 55);
-  drawingContext.setLineDash([]); 
-  
-  updatePhysicsEngine();
-  handleMerges();
-  
-  // 4. Render shapes with glow
-  for (let s of shapes) {
-    let shapeColor = getTierColor(s.tier);
-    fill(shapeColor);
-    stroke(255);
-    strokeWeight(1);
-    
-    // Glowing effect
-    drawingContext.shadowBlur = 15;
-    drawingContext.shadowColor = shapeColor;
-    
-    circle(s.x, s.y, s.radius * 2);
-    
-    drawingContext.shadowBlur = 0; // Reset glow
-    
-    fill(255); 
+  function draw() {
+    background(20);
+    // 1. Draw the Score
+    fill(255);
     noStroke();
-    textAlign(CENTER, CENTER);
-    textSize(s.radius * 1.2);
-    text(letters[s.tier], s.x, s.y);
-  }
-}
-
-function mousePressed() {
-  if (mouseX > borderMargin && mouseX < width - borderMargin) {
-    spawnNewShape(mouseX);
-  }
-}
-
-function spawnNewShape(xPos) {
-  let tier = 0; 
-  shapes.push({
-    x: xPos,
-    y: borderMargin + 20, 
-    vx: 0,
-    vy: 1.5, 
-    radius: 12.5 + (tier * 6), 
-    tier: tier
-  });
-}
-
-// ... (Physics and Merge functions remain the same)
-
-function updatePhysicsEngine() {
-  for (let s of shapes) {
-    s.vy += 0.22; 
-    s.x += s.vx;
-    s.y += s.vy;
-    s.vx *= 0.98;
-    s.vy *= 0.99;
+    textAlign(LEFT, CENTER);
+    textSize(16);
+    text("! Created: " + score, borderMargin, borderMargin + 10);
     
-    let leftBound = borderMargin + s.radius;
-    let rightBound = width - borderMargin - s.radius;
-    let bottomBound = height - borderMargin - s.radius;
+    // 2. Draw the container bounds
+    fill(30);
+    stroke(150);
+    strokeWeight(2);
+    rect(borderMargin, borderMargin + 55, width - (borderMargin * 2), height - (borderMargin * 2) - 55);
     
-    if (s.x < leftBound) { s.x = leftBound; s.vx *= -0.5; } 
-    else if (s.x > rightBound) { s.x = rightBound; s.vx *= -0.5; }
+    // 3. Draw the danger line
+    stroke(255, 0, 50, 200);
+    strokeWeight(2);
+    drawingContext.setLineDash([5, 5]);
+    line(borderMargin, borderMargin + 55, width - borderMargin, borderMargin + 55);
+    drawingContext.setLineDash([]); 
     
-    if (s.y > bottomBound) {
-      s.y = bottomBound;
-      s.vy *= -0.3; 
-      s.vx *= 0.8;  
+    updatePhysicsEngine();
+    handleMerges();
+    
+    // 4. Render shapes with glow
+    for (let s of shapes) {
+      let shapeColor = getTierColor(s.tier);
+      fill(shapeColor);
+      stroke(255);
+      strokeWeight(1);
+      drawingContext.shadowBlur = 15;
+      drawingContext.shadowColor = shapeColor;
+      circle(s.x, s.y, s.radius * 2);
+      drawingContext.shadowBlur = 0; 
+      fill(255); 
+      noStroke();
+      textAlign(CENTER, CENTER);
+      textSize(s.radius * 1.2);
+      text(letters[s.tier], s.x, s.y);
     }
   }
-  
-  for (let i = 0; i < shapes.length; i++) {
-    for (let j = i + 1; j < shapes.length; j++) {
-      let s1 = shapes[i];
-      let s2 = shapes[j];
-      let dx = s2.x - s1.x;
-      let dy = s2.y - s1.y;
-      let distSq = dx * dx + dy * dy;
-      let minR = s1.radius + s2.radius;
-      
-      if (distSq < minR * minR) {
-        let dist = sqrt(distSq);
-        if (dist === 0) { dist = 0.1; dx = 0.1; dy = 0; } 
-        let overlap = minR - dist;
-        let nx = dx / dist;
-        let ny = dy / dist;
-        s1.x -= nx * overlap * 0.5;
-        s1.y -= ny * overlap * 0.5;
-        s2.x += nx * overlap * 0.5;
-        s2.y += ny * overlap * 0.5;
-        
-        let dvx = s2.vx - s1.vx;
-        let dvy = s2.vy - s1.vy;
-        let dotProduct = (dvx * nx) + (dvy * ny);
-        if (dotProduct < 0) {
-          let bounce = dotProduct * 0.3;
-          s1.vx += nx * bounce; s1.vy += ny * bounce;
-          s2.vx -= nx * bounce; s2.vy -= ny * bounce;
-        }
-      }
+
+  function mousePressed() {
+    if (mouseX > borderMargin && mouseX < width - borderMargin) {
+      spawnNewShape(mouseX);
     }
   }
-}
 
-function handleMerges() {
-  let nextShapes = [];
-  let toRemove = new Set();
-  for (let i = 0; i < shapes.length; i++) {
-    for (let j = i + 1; j < shapes.length; j++) {
-      if (toRemove.has(i) || toRemove.has(j)) continue;
-      let s1 = shapes[i];
-      let s2 = shapes[j];
-      
-      if (s1.tier === s2.tier) {
-        let distSq = sq(s2.x - s1.x) + sq(s2.y - s1.y);
-        let minR = s1.radius + s2.radius;
-        if (distSq <= (minR * minR) + 5) {
-          toRemove.add(i);
-          toRemove.add(j);
-          if (s1.tier < letters.length - 1) {
-            let newTier = s1.tier + 1;
-            if (newTier === letters.length - 1) score++;
-            nextShapes.push({ x: (s1.x + s2.x) / 2, y: (s1.y + s2.y) / 2, vx: 0, vy: 0, radius: 12.5 + (newTier * 6), tier: newTier });
-          }
-        }
-      }
-    }
+  function spawnNewShape(xPos) {
+    let tier = 0; 
+    shapes.push({
+      x: xPos,
+      y: borderMargin + 20, 
+      vx: 0,
+      vy: 1.5, 
+      radius: 12.5 + (tier * 6), 
+      tier: tier
+    });
   }
-  let newShapeList = [];
-  for (let i = 0; i < shapes.length; i++) { if (!toRemove.has(i)) newShapeList.push(shapes[i]); }
-  shapes = newShapeList.concat(nextShapes);
-}
 
-// Updated Neon Palette
-function getTierColor(tier) {
-  let colors = [
-    '#FFFF00', // Yellow
-    '#FF69B4', // Pink
-    '#00BFFF', // Bright Blue
-    '#9d4edd', // Electric Purple
-    '#FF00FF', // Neon Magenta
-    '#7fff00'  // Lime Green (!)
-  ];
-  return colors[tier % colors.length];
-}
+  function updatePhysicsEngine() {
+    for (let s of shapes) {
+      s.vy += 0.22; s.x += s.vx; s.y += s.vy; s.vx *= 0.98; s.vy *= 0.99;
+      let leftBound = borderMargin + s.radius;
+      let rightBound = width - borderMargin - s.radius;
+      let bottomBound = height - borderMargin - s.radius;
+      if (s.x < leftBound) { s.x = leftBound; s.vx *= -0.5; } 
+      else if (s.x > rightBound) { s.x = rightBound; s.vx *= -0.5; }
+      if (s.y > bottomBound) { s.y = bottomBound; s.vy *= -0.3; s.vx *= 0.8; }
+    }
+    // ... (keep your collision logic here)
+  }
+
+  function handleMerges() {
+    // ... (keep your merge logic here)
+  }
+
+  function getTierColor(tier) {
+    let colors = ['#FFFF00', '#FF69B4', '#00BFFF', '#9d4edd', '#FF00FF', '#7fff00'];
+    return colors[tier % colors.length];
+  }
 </script>
   </main>
 
