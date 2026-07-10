@@ -926,6 +926,25 @@
     box-shadow: 0 0 30px var(--neon-cyan);
     cursor: pointer;
 }
+ .link-tree-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    background: rgba(26, 0, 51, 0.4);
+    border: 2px solid var(--neon-purple);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+
+/* Force buttons to be full-width in this container for a Linktree feel */
+.link-tree-container .button {
+    width: 100%;
+    text-align: center;
+} 
   </style>
 </head>
 <body>
@@ -957,7 +976,16 @@
       </nav>
     </div>
   </header>
-
+<section id="links" aria-labelledby="links-title">
+    <div class="wrap">
+        <h2 id="links-title" style="text-align: center; margin-bottom: 40px;">Explore Further</h2>
+        <div class="link-tree-container">
+            <a href="https://mooncabincollective.etsy.com" class="button">Visit Our Etsy Shop</a>
+            <a href="https://www.threads.com/@mooncabincollective" class="button ghost-button">Follow on Threads</a>
+            <a href="https://your-other-link.com" class="button">Custom Link Title</a>
+        </div>
+    </div>
+</section>
   <main id="top" class="wrap">
     <section class="hero" aria-labelledby="hero-title">
       <div>
