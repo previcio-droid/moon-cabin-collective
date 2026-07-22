@@ -288,6 +288,11 @@ section::before {
   align-items: center;
 }
 
+.hero-left {
+  display: flex;
+  flex-direction: column;
+}
+
 .kicker {
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -363,6 +368,21 @@ h3 {
   flex-wrap: wrap;
   gap: 20px;
   align-items: center;
+}
+
+.linktree-section {
+  text-align: center;
+  padding: 30px;
+  background: linear-gradient(135deg, rgba(26, 0, 51, 0.8), rgba(77, 0, 51, 0.4));
+  border-top: 2px dashed var(--neon-pink);
+  border-bottom: 2px dashed var(--neon-cyan);
+  border-radius: 20px;
+  margin-top: 30px;
+}
+
+.linktree-section h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
 .moon-card {
@@ -794,7 +814,7 @@ footer {
 }
 
 @media (max-width: 920px) {
-  .hero, .story, .cta {
+  .hero {
     grid-template-columns: 1fr;
   }
   .product-grid {
@@ -812,6 +832,9 @@ footer {
   .cta {
     grid-template-columns: 1fr;
     text-align: center;
+  }
+  .story {
+    grid-template-columns: 1fr;
   }
   .story-card {
     transform: skewX(0deg);
@@ -880,17 +903,6 @@ footer {
     width: 100%;
     text-align: center;
   }
-  .linktree-section {
-    text-align: center;
-    padding: 60px 20px;
-    background: linear-gradient(135deg, rgba(26, 0, 51, 0.8), rgba(77, 0, 51, 0.4));
-    border-top: 2px dashed var(--neon-pink);
-    border-bottom: 2px dashed var(--neon-cyan);
-}
-
-.linktree-section h2 {
-    margin-bottom: 30px;
-}
 }
   </style>
 </head>
@@ -925,19 +937,19 @@ footer {
   </header>
   <main id="top" class="wrap">
     <section class="hero" aria-labelledby="hero-title">
-      <div>
+      <div class="hero-left">
         <p class="kicker">✨ Trippy Vibes • Cosmic Art • Handmade Magic ✨</p>
         <h1 id="hero-title">Welcome to the Psychedelic Cabin!</h1>
         <p>
-          Moon Cabin Collective is your portal to vibrant, mind-bending art. We create cosmic merch, trippy prints, cool stickers, and otherworldly goods inspired by infinite dreams and electric frequencies beyond the veil.
+          Moon Cabin Collective is your portal to vibrant, mind-bending art. We create cosmic merch, trippy prints, cool stickers, and otherworldly goods inspired by infinite dreams and electric frequencies.
         </p>
+        <section class="linktree-section" id="explore-further">
+          <h2>CONNECT WITH THE COSMOS</h2>
+          <a href="https://linktree.YOUR-LINKTREE-USERNAME" target="_blank" class="button button-primary neon-linktree-btn">
+              ✨ OPEN LINKTREE PORTAL ✨
+          </a>
+        </section>
       </div>
-      <section class="linktree-section" id="explore-further">
-    <h2>CONNECT WITH THE COSMOS</h2>
-    <a href="https://linktree.YOUR-LINKTREE-USERNAME" target="_blank" class="button button-primary neon-linktree-btn">
-        ✨ OPEN LINKTREE PORTAL ✨
-    </a>
-</section>
 
       <div class="moon-card" aria-label="Moon Cabin Collective logo medallion">
         <div class="logo-medallion">
@@ -976,10 +988,10 @@ footer {
       <div class="artist-content">
         <h2 id="artist-title">About the Artist</h2>
         <p>
-          Welcome to my cosmic creative sanctuary! I'm Previcio the visionary behind Moon Cabin Collective, a space where imagination flows freely and psychedelic dreams become tangible art. Every piece I create is infused with intention, energy, and a deep love for vibrant, mind-bending aesthetics.
+          Welcome to my cosmic creative sanctuary! I'm Previcio the visionary behind Moon Cabin Collective, a space where imagination flows freely and psychedelic dreams become tangible art. Every piece pulses with the energy of the cosmos, crafted to inspire wonder and spark inner journeys.
         </p>
         <p>
-          Moon Cabin Collective isn't just a shop—it's a portal to another dimension of creativity. Thank you for stepping into this cabin and supporting the art that matters to me. Your energy and presence fuel this cosmic journey. 🌌✨
+          Moon Cabin Collective isn't just a shop—it's a portal to another dimension of creativity. Thank you for stepping into this cabin and supporting the art that matters to me. Your energy and enthusiasm fuel the magic.
         </p>
         <a href="lore/gooseverse_codex_v2_7.html" class="codex-button">
   EXPLORE THE CODEX
@@ -998,149 +1010,81 @@ footer {
   let score = 0;
 
   function setup() {
-    let canvas = createCanvas(300, 400);
-    canvas.parent('goose-game-container');
+    let container = document.getElementById('goose-game-container');
+    let w = min(container.clientWidth - 40, 800);
+    let h = 400;
+    let cnv = createCanvas(w, h);
+    cnv.parent('goose-game-container');
+    noStroke();
+    
+    for (let i = 0; i < letters.length; i++) {
+      shapes.push(new Shape(random(borderMargin, width - borderMargin), random(borderMargin, height - borderMargin), letters[i]));
+    }
   }
 
   function draw() {
-    background(20);
+    background(26, 0, 51, 150);
     
-    // 1. Draw the Score
-    fill(255);
-    noStroke();
-    textAlign(LEFT, CENTER);
-    textSize(16);
-    text("! Created: " + score, borderMargin, borderMargin + 10);
-    
-    // 2. Draw the container bounds
-    fill(30);
-    stroke(150);
-    strokeWeight(2);
-    rect(borderMargin, borderMargin + 55, width - (borderMargin * 2), height - (borderMargin * 2) - 55);
-    
-    // 3. Draw the danger line
-    stroke(255, 0, 50, 200);
-    strokeWeight(2);
-    drawingContext.setLineDash([5, 5]);
-    line(borderMargin, borderMargin + 55, width - borderMargin, borderMargin + 55);
-    drawingContext.setLineDash([]); 
-    
-    updatePhysicsEngine();
-    handleMerges();
-    
-    // 4. Render shapes
-    for (let s of shapes) {
-      let shapeColor = getTierColor(s.tier);
-      fill(shapeColor);
-      stroke(255);
-      strokeWeight(1);
-      drawingContext.shadowBlur = 15;
-      drawingContext.shadowColor = shapeColor;
-      circle(s.x, s.y, s.radius * 2);
-      drawingContext.shadowBlur = 0; 
-      fill(255); 
-      noStroke();
-      textAlign(CENTER, CENTER);
-      textSize(s.radius * 1.2);
-      text(letters[s.tier], s.x, s.y);
+    for (let shape of shapes) {
+      shape.update();
+      shape.display();
     }
+
+    fill(255, 255, 0);
+    textSize(20);
+    textAlign(LEFT);
+    text('Score: ' + score, 20, 30);
   }
 
   function mousePressed() {
-    if (mouseX > borderMargin && mouseX < width - borderMargin) {
-      spawnNewShape(mouseX);
-    }
-  }
-
-  function spawnNewShape(xPos) {
-    // Randomize starting tier slightly or keep at 0
-    let tier = floor(random(0, 2)); 
-    shapes.push({
-      x: xPos,
-      y: borderMargin + 20, 
-      vx: 0,
-      vy: 1.5, 
-      radius: 12.5 + (tier * 6), 
-      tier: tier
-    });
-  }
-
-  function updatePhysicsEngine() {
-    for (let s of shapes) {
-      s.vy += 0.22; s.x += s.vx; s.y += s.vy; s.vx *= 0.98; s.vy *= 0.99;
-      let leftBound = borderMargin + s.radius;
-      let rightBound = width - borderMargin - s.radius;
-      let bottomBound = height - borderMargin - s.radius;
-      if (s.x < leftBound) { s.x = leftBound; s.vx *= -0.5; } 
-      else if (s.x > rightBound) { s.x = rightBound; s.vx *= -0.5; }
-      if (s.y > bottomBound) { s.y = bottomBound; s.vy *= -0.3; s.vx *= 0.8; }
-    }
-    
-    // Collision detection
-    for (let i = 0; i < shapes.length; i++) {
-      for (let j = i + 1; j < shapes.length; j++) {
-        let s1 = shapes[i];
-        let s2 = shapes[j];
-        let dx = s2.x - s1.x;
-        let dy = s2.y - s1.y;
-        let distSq = dx * dx + dy * dy;
-        let minR = s1.radius + s2.radius;
-        if (distSq < minR * minR) {
-          let dist = sqrt(distSq);
-          if (dist === 0) { dist = 0.1; dx = 0.1; dy = 0; }
-          let overlap = minR - dist;
-          let nx = dx / dist;
-          let ny = dy / dist;
-          s1.x -= nx * overlap * 0.5;
-          s1.y -= ny * overlap * 0.5;
-          s2.x += nx * overlap * 0.5;
-          s2.y += ny * overlap * 0.5;
-        }
+    for (let i = shapes.length - 1; i >= 0; i--) {
+      if (shapes[i].contains(mouseX, mouseY)) {
+        shapes.splice(i, 1);
+        score++;
+        break;
       }
     }
   }
 
-  function handleMerges() {
-    let nextShapes = [];
-    let toRemove = new Set();
-    for (let i = 0; i < shapes.length; i++) {
-      for (let j = i + 1; j < shapes.length; j++) {
-        if (toRemove.has(i) || toRemove.has(j)) continue;
-        let s1 = shapes[i];
-        let s2 = shapes[j];
-        if (s1.tier === s2.tier) {
-          let distSq = sq(s2.x - s1.x) + sq(s2.y - s1.y);
-          let minR = s1.radius + s2.radius;
-          if (distSq <= (minR * minR) + 5) {
-            toRemove.add(i);
-            toRemove.add(j);
-            if (s1.tier < letters.length - 1) {
-              let newTier = s1.tier + 1;
-              if (newTier === letters.length - 1) score++;
-              nextShapes.push({ x: (s1.x + s2.x) / 2, y: (s1.y + s2.y) / 2, vx: 0, vy: 0, radius: 12.5 + (newTier * 6), tier: newTier });
-            }
-          }
-        }
+  class Shape {
+    constructor(x, y, letter) {
+      this.x = x;
+      this.y = y;
+      this.vx = random(-3, 3);
+      this.vy = random(-3, 3);
+      this.letter = letter;
+      this.size = 40;
+    }
+
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      
+      if (this.x - this.size/2 < borderMargin || this.x + this.size/2 > width - borderMargin) {
+        this.vx *= -1;
+        this.x = constrain(this.x, borderMargin + this.size/2, width - borderMargin - this.size/2);
+      }
+      if (this.y - this.size/2 < borderMargin || this.y + this.size/2 > height - borderMargin) {
+        this.vy *= -1;
+        this.y = constrain(this.y, borderMargin + this.size/2, height - borderMargin - this.size/2);
       }
     }
-    let newShapeList = [];
-    for (let i = 0; i < shapes.length; i++) { if (!toRemove.has(i)) newShapeList.push(shapes[i]); }
-    shapes = newShapeList.concat(nextShapes);
-  }
 
-  function getTierColor(tier) {
-    let colors = ['#FFFF00', '#FF69B4', '#00BFFF', '#9d4edd', '#FF00FF', '#7fff00'];
-    return colors[tier % colors.length];
+    display() {
+      fill(255, 20, 147);
+      circle(this.x, this.y, this.size);
+      
+      fill(255, 255, 0);
+      textSize(20);
+      textAlign(CENTER, CENTER);
+      text(this.letter, this.x, this.y);
+    }
+
+    contains(px, py) {
+      return dist(px, py, this.x, this.y) < this.size / 2;
+    }
   }
 </script>
-
   </main>
-
-  <footer>
-    <div class="wrap footer-inner">
-      <span>© 2026 Moon Cabin Collective. All rights reserved.</span>
-      <span>Handmade with cosmic energy ✨</span>
-    </div>
-  </footer>
 </body>
 </html>
